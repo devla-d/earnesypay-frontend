@@ -111,104 +111,28 @@ const Withdrawal = () => {
                   <ul className="nav nav-tabs justify-content-center">
                     <li className="nav-item">
                       <a
-                        data-bs-toggle="tab"
                         className="nav-link active"
-                        aria-current="page"
-                        href="#msg"
+                        data-bs-toggle="tab"
+                        href="#pro"
                       >
-                        DETAILS
+                        Bank Transfer
                       </a>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link" data-bs-toggle="tab" href="#pro">
-                        Bank Transfer
+                      <a
+                        data-bs-toggle="tab"
+                        className="nav-link "
+                        aria-current="page"
+                        href="#msg"
+                      >
+                        More Options
                       </a>
                     </li>
                   </ul>
                   {/* <!-- Tab panes --> */}
                   <div className="tab-content">
                     {/* <!--tab pane--> */}
-                    <div className="tab-pane container active" id="msg">
-                      <form action="" onSubmit={handlePaySubmit}>
-                        <div className="mt-2 mb-3">
-                          <label>Select a method to recieve money</label>
-                          <div className="paymethod mt-3">
-                            <div className="radio-toolbar">
-                              <input
-                                type="radio"
-                                name="mode"
-                                id="mode_perfect_money"
-                                required={true}
-                                value="Perfect money"
-                                onChange={handleChange}
-                                checked={payMethod.mode === "Perfect money"}
-                              />
-                              <label htmlFor="mode_perfect_money">
-                                Perfect Money
-                              </label>
-                            </div>
-                            <div className="radio-toolbar">
-                              <input
-                                type="radio"
-                                name="mode"
-                                id="mode_btc"
-                                required={true}
-                                value="Bitcoin"
-                                onChange={handleChange}
-                                checked={payMethod.mode === "Bitcoin"}
-                              />
-                              <label htmlFor="mode_btc"> Bitcoin</label>
-                            </div>
-                            <div className="radio-toolbar">
-                              <input
-                                type="radio"
-                                name="mode"
-                                id="mode_usdt"
-                                required={true}
-                                value="USDT"
-                                onChange={handleChange}
-                                checked={payMethod.mode === "USDT"}
-                              />
-                              <label htmlFor="mode_usdt"> USDT</label>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="mb-3">
-                          <label htmlFor="email" className="form-label">
-                            Amount
-                          </label>
-                          <input
-                            type="number"
-                            name="amount"
-                            className="form-control form-control-lg"
-                            id="amount"
-                            placeholder="Amount"
-                            value={payMethod.amount}
-                            onChange={handleChange}
-                          />
-                          <p className="text-danger"></p>
-                        </div>
-
-                        <div className="mb-3">
-                          <div className="d-grid gap-2">
-                            <button
-                              className="btn btn-primary custom mt-3"
-                              type="submit"
-                              disabled={loading}
-                            >
-                              {loading ? (
-                                <i className="fa fa-spinner fa-spin fa-1x formLoader"></i>
-                              ) : null}
-                              Submit
-                            </button>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                    {/* <!--tab pane ends--> */}
-                    {/* <!--tab pane--> */}
-                    <div className="tab-pane container fade" id="pro">
+                    <div className="tab-pane container active " id="pro">
                       <form action="" onSubmit={handleBankSubmit}>
                         <div className="mb-3">
                           <label htmlFor="bank" className="form-label">
@@ -274,6 +198,86 @@ const Withdrawal = () => {
                             name="amount"
                             value={bankPay.amount}
                             onChange={handleChangeII}
+                          />
+                          <p className="text-danger"></p>
+                        </div>
+
+                        <div className="mb-3">
+                          <div className="d-grid gap-2">
+                            <button
+                              className="btn btn-primary custom mt-3"
+                              type="submit"
+                              disabled={loading}
+                            >
+                              {loading ? (
+                                <i className="fa fa-spinner fa-spin fa-1x formLoader"></i>
+                              ) : null}
+                              Submit
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    {/* <!--tab pane ends--> */}
+                    {/* <!--tab pane--> */}
+                    <div className="tab-pane container fade " id="msg">
+                      <form action="" onSubmit={handlePaySubmit}>
+                        <div className="mt-2 mb-3">
+                          <label>Select a method to recieve money</label>
+                          <div className="paymethod mt-3">
+                            <div className="radio-toolbar">
+                              <input
+                                type="radio"
+                                name="mode"
+                                id="mode_perfect_money"
+                                required={true}
+                                value="Perfect money"
+                                onChange={handleChange}
+                                checked={payMethod.mode === "Perfect money"}
+                              />
+                              <label htmlFor="mode_perfect_money">
+                                Perfect Money
+                              </label>
+                            </div>
+                            <div className="radio-toolbar">
+                              <input
+                                type="radio"
+                                name="mode"
+                                id="mode_btc"
+                                required={true}
+                                value="Bitcoin"
+                                onChange={handleChange}
+                                checked={payMethod.mode === "Bitcoin"}
+                              />
+                              <label htmlFor="mode_btc"> Bitcoin</label>
+                            </div>
+                            <div className="radio-toolbar">
+                              <input
+                                type="radio"
+                                name="mode"
+                                id="mode_usdt"
+                                required={true}
+                                value="USDT"
+                                onChange={handleChange}
+                                checked={payMethod.mode === "USDT"}
+                              />
+                              <label htmlFor="mode_usdt"> USDT</label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="mb-3">
+                          <label htmlFor="email" className="form-label">
+                            Amount
+                          </label>
+                          <input
+                            type="number"
+                            name="amount"
+                            className="form-control form-control-lg"
+                            id="amount"
+                            placeholder="Amount"
+                            value={payMethod.amount}
+                            onChange={handleChange}
                           />
                           <p className="text-danger"></p>
                         </div>

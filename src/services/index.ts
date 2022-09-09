@@ -11,7 +11,7 @@ export const reQuest = axios.create({
     Authorization: token ? `Token ${token}` : false,
   },
 });
-
+//"https://earneasymoney.net/"
 // const fetchExData =  () => {
 //   // try {
 //   //   const res = await reQuest.get("/available-user-details/");
@@ -45,14 +45,14 @@ export const RegisterSchema = (
       .string()
 
       .required("Fullname is required"),
-    phone: yup.string().required("Phone is required"),
+    // phone: yup.string().required("Phone is required"),
     referral: yup
       .string()
       .notRequired()
       .oneOf(activeUsername, "Invalid referral code"),
-    perfect_money_id: yup.string().notRequired(),
-    btc_id: yup.string().notRequired(),
-    usdt_id: yup.string().notRequired(),
+    // perfect_money_id: yup.string().notRequired(),
+    // btc_id: yup.string().notRequired(),
+    // usdt_id: yup.string().notRequired(),
     password: yup.string().min(8).max(12).required("Password is required"),
   });
 };

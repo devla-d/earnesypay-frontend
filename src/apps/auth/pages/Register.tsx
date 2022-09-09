@@ -12,12 +12,12 @@ import useUserData from "../../../hook/useUserData";
 interface formValue {
   full_name: string;
   email: string;
-  phone: string;
+  // phone: string;
   password: string;
   referral: string;
-  perfect_money_id: string;
-  btc_id: string;
-  usdt_id: string;
+  // perfect_money_id: string;
+  // btc_id: string;
+  // usdt_id: string;
 }
 
 const Register = () => {
@@ -58,12 +58,12 @@ const Register = () => {
       initialValues: {
         full_name: "",
         email: "",
-        phone: "",
+        // phone: "",
         password: "",
         referral: "",
-        perfect_money_id: "",
-        btc_id: "",
-        usdt_id: "",
+        // perfect_money_id: "",
+        // btc_id: "",
+        // usdt_id: "",
       },
       validationSchema: regSchema,
       onSubmit(values, formikHelpers) {
@@ -96,7 +96,7 @@ const Register = () => {
         <form action="" onSubmit={handleSubmit}>
           {/* <!---row satrt--> */}
           <div className="row">
-            <div className="col-md-6">
+            <div className="col-md-12">
               <div className="mb-3">
                 <label htmlFor="full_name" className="form-label">
                   Full name
@@ -121,7 +121,7 @@ const Register = () => {
               </div>
             </div>
 
-            <div className="col-md-6">
+            <div className="col-md-12">
               <div className="mb-3">
                 <label htmlFor="email" className="form-label">
                   Email
@@ -144,31 +144,7 @@ const Register = () => {
               </div>
             </div>
 
-            <div className="col-md-6">
-              <div className="mb-3">
-                <label htmlFor="phone" className="form-label">
-                  Phone
-                </label>
-                <input
-                  type="tel"
-                  className={
-                    "form-control " +
-                    (errors.phone && touched.phone ? "is-invalid" : null)
-                  }
-                  id="phone"
-                  placeholder="name@example.com"
-                  value={values.phone}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-
-                {errors.phone && touched.phone ? (
-                  <p className="invalid-feedback">{errors.phone}</p>
-                ) : null}
-              </div>
-            </div>
-
-            <div className="col-md-6">
+            <div className="col-md-12">
               <div className="mb-3" id="passwordBox">
                 <label htmlFor="password" className="form-label">
                   Password
@@ -198,10 +174,10 @@ const Register = () => {
 
             <div className="col-md-12">
               <div className="mb-3 row">
-                <label htmlFor="refcode" className="col-sm-2 col-form-label">
-                  Ref Code
+                <label htmlFor="refcode" className="col-sm-4 col-form-label">
+                  Ref Code (optional)
                 </label>
-                <div className="col-sm-10">
+                <div className="col-sm-8">
                   <input
                     type="text"
                     className={
@@ -223,69 +199,6 @@ const Register = () => {
               </div>
             </div>
 
-            <div className="col-md-12">
-              <h4 className="text-default">Payment methods</h4>
-            </div>
-
-            <div className="col-md-6">
-              <div className="mb-3">
-                <label htmlFor="perfect_money_id" className="form-label">
-                  Perfect Money
-                </label>
-                <input
-                  type="text"
-                  className={
-                    "form-control " +
-                    (errors.perfect_money_id ? "is-invalid" : null)
-                  }
-                  id="perfect_money_id"
-                  placeholder="Perfect Money"
-                  value={values.perfect_money_id}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-
-            <div className="col-md-6">
-              <div className="mb-3">
-                <label htmlFor="btc-address" className="form-label">
-                  Bitcoin address
-                </label>
-                <input
-                  type="text"
-                  className={
-                    "form-control " + (errors.btc_id ? "is-invalid" : null)
-                  }
-                  id="btc_id"
-                  placeholder="Bitcoin address"
-                  value={values.btc_id}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-
-            <div className="col-md-12">
-              <div className="mb-3 row">
-                <label
-                  htmlFor="usdt-address"
-                  className="col-sm-4 col-form-label"
-                >
-                  USDT address
-                </label>
-                <div className="col-sm-8">
-                  <input
-                    type="text"
-                    className={
-                      "form-control " + (errors.usdt_id ? "is-invalid" : null)
-                    }
-                    id="usdt_id"
-                    placeholder="USDT address"
-                    value={values.usdt_id}
-                    onChange={handleChange}
-                  />
-                </div>
-              </div>
-            </div>
             <div className="col-md-12">
               <div className="d-grid gap-2">
                 <button

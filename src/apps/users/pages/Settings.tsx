@@ -105,6 +105,10 @@ const Settings = () => {
               <div className="tab-content">
                 {/* <!--tab pane--> */}
                 <div className="tab-pane container active" id="paymentdetails">
+                  <div className="col-md-12">
+                    <h4 className="text-default mt-3">Add Payment methods</h4>
+                  </div>
+
                   <form action="" onSubmit={handleSubmit}>
                     <div className="mb-3 mt-3">
                       <label htmlFor="bank" className="form-label">
