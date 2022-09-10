@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { reQuest } from "../../../services";
+import useAxios from "../../../hook/useAxios";
+import { useAppDispatch } from "../../../hooks";
+import { upDateUser } from "../../auth/slicers/Userslicer";
 import Package from "../components/Package";
-import { PackageResponse } from "../helper";
+import { createInvestmentResponse, PackageResponse } from "../helper";
 
 type Formdata = {
   packId: string;
@@ -13,7 +15,10 @@ type Formdata = {
 const CreateInvestment: React.FC = () => {
   const [packages, setPackages] = useState<PackageResponse[]>();
   const [packForm, setpackForm] = useState({ packId: "", amount: 0 });
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [authRequest] = useAxios();
+  const dispatch = useAppDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // console.log(e.target.name, e.target.value);
@@ -31,25 +36,33 @@ const CreateInvestment: React.FC = () => {
   };
 
   const createInvestment = async (formData: Formdata) => {
+    setLoading(true);
     try {
-      const { data } = await reQuest.post("/create-investment/", formData);
-      // console.log(data);
+      const { data } = await authRequest.post<createInvestmentResponse>(
+        "/create-investment/",
+        formData
+      );
+      console.log(data);
       if (data.error) {
         toast.error(data.error);
-      } else if (data.success) {
-        toast.success(data.success);
+      } else if (data.msg) {
+        dispatch(upDateUser(data.investment.user));
+        toast.success(data.msg);
         navigate("/");
       }
     } catch (error) {
       console.log(error);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
-    reQuest
+    setLoading(true);
+    authRequest
       .get("/get-packages/")
       .then((res) => {
         setPackages(res.data);
+        setLoading(false);
       })
       .catch((e) => console.log(e));
 
@@ -125,7 +138,14 @@ const CreateInvestment: React.FC = () => {
                   />
                 </div>
                 <div className="d-grid gap-2">
-                  <button className="btn btn-primary custom mt-3" type="submit">
+                  <button
+                    className="btn btn-primary custom mt-3"
+                    type="submit"
+                    disabled={loading}
+                  >
+                    {loading ? (
+                      <i className="fa fa-spinner fa-spin fa-1x formLoader"></i>
+                    ) : null}
                     Submit
                   </button>
                 </div>

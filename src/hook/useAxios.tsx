@@ -4,7 +4,6 @@ import { useAppSelector } from "../hooks";
 
 const useAxios = () => {
   const token = useAppSelector((state) => state.user.token);
-  //   console.log(token);
 
   const authRequest = axios.create({
     baseURL: "https://earneasymoney.net/",

@@ -148,6 +148,11 @@ export type endInvestmentResponse = {
   msg: string;
   investment: InvestmentResponse;
 };
+export type createInvestmentResponse = {
+  msg: string;
+  investment: investmentType;
+  error: string;
+};
 
 export type WithdrawResponse = {
   msg: string;
